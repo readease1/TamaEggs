@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TamaEggs - Evolution Through Trading</title>
+    <title>TamaEggs - Play & Earn $TAMA!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,412 +13,544 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            background-color: #000;
-            color: #00ff00;
+            font-family: 'Fredoka', sans-serif;
+            background-color: #ffdead;
+            color: #333;
             overflow-x: hidden;
         }
 
-        /* Matrix rain effect */
-        #matrix-bg {
-            position: fixed;
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa07a 100%);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.1;
+            z-index: 1000;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        .logo {
+            font-size: 2em;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        header {
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
             text-align: center;
-            padding: 40px 20px;
-            border-bottom: 2px solid #00ff00;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #fff5e1 0%, #ffdead 100%);
+        }
+
+        .hero-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 40px;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.3em;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 107, 157, 0.6);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.8em;
+            color: #ff6b9d;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        /* Game Section */
+        .game-section {
+            background: white;
+            padding: 60px;
+            border-radius: 40px;
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 80px;
+        }
+
+        .game-section h2 {
+            text-align: center;
+            font-size: 2.8em;
+            color: #ff6b9d;
             margin-bottom: 40px;
         }
 
-        h1 {
-            font-size: 3em;
-            text-shadow: 0 0 10px #00ff00;
-            margin-bottom: 10px;
-        }
-
-        .tagline {
-            font-size: 1.2em;
-            color: #0f0;
-        }
-
-        /* Game iframe section */
-        .game-section {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
         .game-container {
-            background: #0a0a0a;
-            border: 3px solid #00ff00;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 800px;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            background: #f8f8f8;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         iframe {
             width: 100%;
-            height: 600px;
-            border: 1px solid #00ff00;
-            background: #000;
+            height: 650px;
+            border: none;
+            border-radius: 20px;
+            background: #fff;
         }
 
-        /* Introduction */
-        .intro {
+        /* How It Works */
+        .how-it-works {
             text-align: center;
-            margin: 40px auto;
-            max-width: 800px;
-            line-height: 1.8;
-            padding: 20px;
+            margin-bottom: 80px;
         }
 
-        .intro p {
+        .how-it-works h2 {
+            font-size: 2.8em;
+            color: #ff6b9d;
+            margin-bottom: 50px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .step {
+            background: linear-gradient(135deg, #ffa07a 0%, #ff8c69 100%);
+            padding: 40px 30px;
+            border-radius: 30px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
+        }
+
+        .step-number {
+            font-size: 3em;
+            font-weight: 700;
             margin-bottom: 15px;
-            color: #0f0;
+            opacity: 0.9;
         }
 
-        /* Navigation Menu */
-        nav {
-            text-align: center;
-            margin: 60px 0;
-            padding: 40px 20px;
-            border-top: 2px solid #00ff00;
-            border-bottom: 2px solid #00ff00;
+        .step h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
         }
 
-        .menu-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .menu-btn {
-            background: #000;
-            color: #00ff00;
-            border: 2px solid #00ff00;
-            padding: 15px 40px;
+        .step p {
             font-size: 1.1em;
-            font-family: 'Courier New', monospace;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            line-height: 1.5;
         }
 
-        .menu-btn:hover {
-            background: #00ff00;
-            color: #000;
-            box-shadow: 0 0 20px #00ff00;
+        /* Tokenomics */
+        .tokenomics {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa07a 100%);
+            padding: 80px 40px;
+            border-radius: 40px;
+            color: white;
+            margin-bottom: 80px;
+            box-shadow: 0 15px 60px rgba(255, 107, 157, 0.3);
         }
 
-        /* Social buttons */
-        .social-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .social-btn {
-            background: #000;
-            color: #00ff00;
-            border: 2px solid #00ff00;
-            padding: 15px 30px;
-            font-size: 1em;
-            font-family: 'Courier New', monospace;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            letter-spacing: 1px;
-        }
-
-        .social-btn:hover {
-            background: #00ff00;
-            color: #000;
-            box-shadow: 0 0 15px #00ff00;
-        }
-
-        /* Sections */
-        section {
-            max-width: 900px;
-            margin: 0 auto 80px;
-            padding: 40px;
-            border: 2px solid #00ff00;
-            background: rgba(0, 20, 0, 0.8);
-            display: none;
-            animation: slideIn 0.5s ease;
-        }
-
-        section.active {
-            display: block;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        section h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
+        .tokenomics h2 {
             text-align: center;
-            text-shadow: 0 0 10px #00ff00;
+            font-size: 2.8em;
+            margin-bottom: 50px;
         }
 
-        .faq-item {
-            margin-bottom: 30px;
-            padding: 20px;
-            border-left: 3px solid #00ff00;
+        .token-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
 
-        .faq-question {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            color: #0f0;
+        .token-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 35px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        .faq-answer {
-            color: #0db;
+        .token-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .token-card p {
+            font-size: 1.1em;
             line-height: 1.6;
         }
 
-        .tokenomics-item, .roadmap-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            border-left: 3px solid #00ff00;
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 80px;
         }
 
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.8em;
+            color: #ff6b9d;
+            margin-bottom: 50px;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .faq-question {
+            font-size: 1.4em;
+            color: #ff6b9d;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1.1em;
+        }
+
+        /* Social Section */
+        .social-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 80px;
+        }
+
+        .social-section h2 {
+            font-size: 2.5em;
+            color: #ff6b9d;
+            margin-bottom: 40px;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.3em;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(255, 107, 157, 0.5);
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            border-top: 2px solid #00ff00;
-            margin-top: 60px;
-            color: #0db;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa07a 100%);
+            color: white;
+            border-radius: 40px 40px 0 0;
+            margin-top: 80px;
         }
 
-        /* ASCII art styling */
-        pre {
-            color: #00ff00;
-            text-align: center;
-            font-size: 0.8em;
-            line-height: 1.2;
+        footer p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
         }
 
-        /* Glitch effect on hover */
-        .glitch {
-            position: relative;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            iframe {
+                height: 450px;
+            }
         }
 
-        .glitch:hover {
-            animation: glitch 0.3s infinite;
+        /* Hidden sections initially */
+        section.hidden {
+            display: none;
         }
 
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <canvas id="matrix-bg"></canvas>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">TamaEggs</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#play">Play</a>
+            <a href="#how">How It Works</a>
+            <a href="#tokenomics">Tokenomics</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/695d413f1593926f798e4eb8_TAMA-EGGS-06-01-2026.png" alt="TamaEggs" class="hero-image">
+        <h1>Play & Earn $TAMA!</h1>
+        <p>Hatch, Care & Earn with Your Digital Pet</p>
+        <a href="#play" class="cta-button">Start Playing Now!</a>
+    </section>
 
     <div class="container">
-        <header>
-            <h1 class="glitch">TamaEggs</h1>
-            <p class="tagline">> Evolution Through Trading</p>
-        </header>
+        <!-- Features Section -->
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🥚</div>
+                <h3>Hatch Your Egg</h3>
+                <p>Start your journey by hatching your very own TamaEgg and watch it grow into something amazing!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Earn $TAMA</h3>
+                <p>Play mini-games, complete challenges, and earn $TAMA tokens while having fun!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌟</div>
+                <h3>Level Up</h3>
+                <p>Care for your pet and watch it evolve through different stages with unique abilities!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>Fun Gameplay</h3>
+                <p>Enjoy classic pet game mechanics with modern blockchain rewards!</p>
+            </div>
+        </div>
 
         <!-- Game Section -->
-        <div class="game-section">
+        <section id="play" class="game-section">
+            <h2>Play TamaEggs Now!</h2>
             <div class="game-container">
                 <iframe src="https://autosam.github.io/Tamaweb/" title="TamaEggs Game"></iframe>
             </div>
-        </div>
+        </section>
 
-        <!-- Introduction -->
-        <div class="intro">
-            <p>> Introduction</p>
-            <p>TamaEggs brings the evolution concept of classic digital pets on-chain.</p>
-            <p>There is only one creature in the project. It owns its own wallet and trades in real crypto markets using creator fees.</p>
-            <p>There is no user control and no predefined path.</p>
-            <p>Its evolution is determined entirely by its trading behavior — how it takes risk, how it holds positions, and how it survives market volatility.</p>
-            <p>There are no levels, feeding mechanics, or profit promises.</p>
-            <p>Evolution is not a reward, but a natural outcome of its trading decisions.</p>
-            <p>It may grow, regress, or even die.</p>
-            <p>We simply place it in the market and observe.</p>
-        </div>
-
-        <!-- Navigation Menu -->
-        <nav>
-            <div class="menu-buttons">
-                <button class="menu-btn" onclick="showSection('faq')">FAQ</button>
-                <button class="menu-btn" onclick="showSection('tokenomics')">Tokenomics</button>
-                <button class="menu-btn" onclick="showSection('roadmap')">Roadmap</button>
-                <button class="menu-btn" onclick="showSection('about')">About</button>
+        <!-- How It Works -->
+        <section id="how" class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Start Playing</h3>
+                    <p>Load up the game and hatch your first TamaEgg!</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Care & Play</h3>
+                    <p>Feed, play, and complete daily challenges with your pet.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Earn Rewards</h3>
+                    <p>Collect $TAMA tokens as you progress and level up!</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Evolve & Grow</h3>
+                    <p>Watch your TamaEgg evolve into new forms with special abilities!</p>
+                </div>
             </div>
+        </section>
+
+        <!-- Tokenomics -->
+        <section id="tokenomics" class="tokenomics">
+            <h2>$TAMA Tokenomics</h2>
+            <div class="token-grid">
+                <div class="token-card">
+                    <h3>Play-to-Earn</h3>
+                    <p>Earn $TAMA by playing games and completing daily tasks!</p>
+                </div>
+                <div class="token-card">
+                    <h3>Fair Distribution</h3>
+                    <p>70% allocated to player rewards and community growth.</p>
+                </div>
+                <div class="token-card">
+                    <h3>Game Rewards</h3>
+                    <p>Earn tokens through gameplay, achievements, and special events.</p>
+                </div>
+                <div class="token-card">
+                    <h3>Community First</h3>
+                    <p>Built by the community, for the community with transparent tokenomics.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">What is TamaEggs?</div>
+                <div class="faq-answer">TamaEggs is a fun, nostalgic digital pet game where you can hatch, care for, and evolve your own creatures while earning $TAMA tokens!</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I earn $TAMA?</div>
+                <div class="faq-answer">You earn $TAMA by playing mini-games, completing daily challenges, caring for your pet, and achieving milestones in the game!</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is it free to play?</div>
+                <div class="faq-answer">Yes! TamaEggs is completely free to play. Just load up the game and start hatching your egg!</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What can I do with $TAMA tokens?</div>
+                <div class="faq-answer">$TAMA tokens can be used for in-game purchases, special items, and can be traded on supported exchanges!</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How does my pet evolve?</div>
+                <div class="faq-answer">Your TamaEgg evolves based on how you care for it! Feed it, play with it, and complete challenges to unlock new evolution stages!</div>
+            </div>
+        </section>
+
+        <!-- Social Section -->
+        <div class="social-section">
+            <h2>Join Our Community!</h2>
             <div class="social-buttons">
-                <a href="https://x.com" target="_blank" class="social-btn">𝕏 Twitter</a>
-                <a href="https://github.com" target="_blank" class="social-btn">⚡ GitHub</a>
+                <a href="https://x.com" target="_blank" class="social-btn">
+                    <span>🐦</span> Twitter
+                </a>
+                <a href="https://github.com/readease1/TamaEggs" target="_blank" class="social-btn">
+                    <span>⚡</span> GitHub
+                </a>
             </div>
-        </nav>
-
-        <!-- FAQ Section -->
-        <section id="faq">
-            <h2>> Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <div class="faq-question">Q: What is TamaEggs?</div>
-                <div class="faq-answer">A: TamaEggs is an on-chain evolution experiment where a digital creature trades autonomously in crypto markets. Its evolution is determined by its trading performance, not user interaction.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Q: How does it evolve?</div>
-                <div class="faq-answer">A: Evolution happens naturally based on trading behavior - risk management, position holding, and market survival. There are no predetermined levels or guaranteed outcomes.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Q: Can I control the creature?</div>
-                <div class="faq-answer">A: No. There is no user control. The creature operates autonomously with its own wallet and makes its own trading decisions.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Q: What blockchain is this on?</div>
-                <div class="faq-answer">A: TamaEggs operates on-chain with real cryptocurrency trading powered by creator fees.</div>
-            </div>
-        </section>
-
-        <!-- Tokenomics Section -->
-        <section id="tokenomics">
-            <h2>> Tokenomics</h2>
-            <div class="tokenomics-item">
-                <strong>Livestreamed 24/7</strong><br>
-                Watch the creature's evolution in real-time
-            </div>
-            <div class="tokenomics-item">
-                <strong>100% Creator Fee Driven</strong><br>
-                All trading capital comes from creator fees
-            </div>
-            <div class="tokenomics-item">
-                <strong>0% Team Allocation</strong><br>
-                Pure autonomous trading experiment
-            </div>
-            <div class="tokenomics-item">
-                <strong>Infinite Cycles</strong><br>
-                Evolution continues as long as the creature survives
-            </div>
-        </section>
-
-        <!-- Roadmap Section -->
-        <section id="roadmap">
-            <h2>> Roadmap</h2>
-            <div class="roadmap-item">
-                <strong>Phase 1: Genesis</strong><br>
-                Initial deployment and creature activation
-            </div>
-            <div class="roadmap-item">
-                <strong>Phase 2: First Trades</strong><br>
-                Autonomous trading begins in live markets
-            </div>
-            <div class="roadmap-item">
-                <strong>Phase 3: Evolution Path</strong><br>
-                Natural evolution based on trading performance
-            </div>
-            <div class="roadmap-item">
-                <strong>Phase 4: Observation</strong><br>
-                Community watches and documents the experiment
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about">
-            <h2>> About</h2>
-            <p style="line-height: 1.8; color: #0db;">
-                TamaEggs is an experimental on-chain project that combines nostalgic digital pet mechanics with autonomous crypto trading.
-                Unlike traditional projects, there are no promises, no roadmaps guaranteeing success, and no human intervention in the creature's decisions.
-            </p>
-            <p style="line-height: 1.8; color: #0db; margin-top: 20px;">
-                This is a pure observation experiment. The creature lives, trades, and evolves (or dies) based entirely on market conditions and its own algorithmic behavior.
-            </p>
-            <p style="line-height: 1.8; color: #0db; margin-top: 20px;">
-                We are simply observers in this experiment. The outcome is uncertain, and that's the point.
-            </p>
-        </section>
-
-        <footer>
-            <p>© 2026 TamaEggs | An On-Chain Evolution Experiment</p>
-            <p style="margin-top: 10px;">> Systems Online | Trading Active | Evolution In Progress</p>
-        </footer>
+        </div>
     </div>
 
-    <script>
-        // Matrix rain effect
-        const canvas = document.getElementById('matrix-bg');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン01';
-        const charArray = chars.split('');
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
-
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#00ff00';
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = charArray[Math.floor(Math.random() * charArray.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(drawMatrix, 35);
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        // Section navigation
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+    <!-- Footer -->
+    <footer>
+        <p>TamaEggs - Play, Earn, & Have Fun!</p>
+        <p>© 2026 TamaEggs | All Rights Reserved</p>
+    </footer>
 </body>
 </html>
