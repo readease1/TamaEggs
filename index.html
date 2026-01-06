@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TamaEggs - Play & Earn $TAMA!</title>
+    <title>TamaEggs - Play & Earn $TAMA</title>
     <link rel="icon" type="image/png" href="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/695d4309421e090ae5e85778_pixel-art-egg-game-asset_735839-166%20(1).png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #ff6b9d;
+            --secondary: #ffa07a;
+            --bg: #ffdead;
+            --dark: #1a1a1a;
+            --gray: #666;
+            --light-gray: #f5f5f5;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,562 +23,417 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #ffdead;
-            color: #333;
-            overflow-x: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Navbar */
         .navbar {
-            background: linear-gradient(135deg, #ff6b9d 0%, #ffa07a 100%);
-            padding: 25px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 107, 157, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.2em;
-            font-weight: 700;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 1.5em;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
             display: flex;
-            gap: 35px;
+            gap: 40px;
             align-items: center;
         }
 
         .nav-links a {
-            color: white;
+            color: var(--dark);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.05em;
-            transition: all 0.3s;
-            padding: 10px 18px;
-            border-radius: 25px;
+            font-size: 0.95em;
+            transition: color 0.2s ease;
         }
 
         .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
+            color: var(--primary);
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
-            text-align: center;
-            padding: 100px 20px 80px;
-            background: linear-gradient(180deg, #fff5e1 0%, #ffdead 100%);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 40px 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
         }
 
-        .hero-image {
-            max-width: 650px;
-            width: 100%;
-            height: auto;
-            margin-bottom: 50px;
-            filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.2));
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-25px); }
-        }
-
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 4em;
-            font-weight: 800;
-            color: #ff6b9d;
+        .hero-content h1 {
+            font-size: 4.5em;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
             margin-bottom: 25px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            letter-spacing: -1px;
+            color: var(--dark);
         }
 
-        .hero p {
-            font-size: 1.6em;
-            color: #555;
-            margin-bottom: 40px;
+        .hero-content .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.25em;
+            color: var(--gray);
+            margin-bottom: 35px;
             font-weight: 400;
         }
 
         .cta-button {
-            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 20px 60px;
-            font-size: 1.4em;
+            padding: 18px 45px;
+            font-size: 1.05em;
             font-weight: 600;
             border: none;
-            border-radius: 50px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
             text-decoration: none;
-            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(255, 107, 157, 0.3);
         }
 
         .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(255, 107, 157, 0.4);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.15));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         /* Container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 80px 30px;
+            padding: 0 40px 60px;
         }
 
-        /* Stats Bar */
-        .stats-bar {
+        /* Section Titles */
+        .section-title {
+            font-size: 3em;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: -1px;
+            color: var(--dark);
+        }
+
+        /* Stats */
+        .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 30px;
             margin-bottom: 100px;
-            padding: 50px;
-            background: white;
-            border-radius: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         }
 
-        .stat-item {
+        .stat-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
             text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .stat-number {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3em;
-            font-weight: 700;
-            color: #ff6b9d;
-            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+            letter-spacing: -1px;
         }
 
         .stat-label {
-            font-size: 1.1em;
-            color: #666;
+            color: var(--gray);
+            font-size: 0.95em;
             font-weight: 500;
-        }
-
-        /* Features Section */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-bottom: 100px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 50px 40px;
-            border-radius: 35px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            text-align: left;
-            border: 3px solid transparent;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            border-color: #ff6b9d;
-        }
-
-        .feature-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2em;
-            color: #ff6b9d;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.8;
-            font-size: 1.15em;
         }
 
         /* Game Section */
         .game-section {
-            background: white;
-            padding: 70px;
-            border-radius: 45px;
-            box-shadow: 0 20px 70px rgba(0, 0, 0, 0.12);
             margin-bottom: 100px;
         }
 
-        .game-section h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            text-align: center;
-            font-size: 3.2em;
-            color: #ff6b9d;
-            margin-bottom: 50px;
-            font-weight: 700;
-        }
-
-        .game-container {
-            background: #f8f8f8;
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.05);
+        .game-wrapper {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         iframe {
             width: 100%;
             height: 700px;
             border: none;
-            border-radius: 25px;
-            background: #fff;
+            border-radius: 12px;
         }
 
-        /* Evolution Chart Section */
-        .evolution-section {
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             margin-bottom: 100px;
+            align-items: center;
         }
 
-        .evolution-section h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            text-align: center;
-            font-size: 3.2em;
-            color: #ff6b9d;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        .evolution-section p {
-            text-align: center;
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 50px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .evolution-chart {
-            background: white;
-            padding: 50px;
-            border-radius: 40px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-        }
-
-        .evolution-chart img {
+        .two-column img {
             width: 100%;
             height: auto;
-            border-radius: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        /* Release Section */
-        .release-section {
-            margin-bottom: 100px;
-        }
-
-        .release-section h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            text-align: center;
-            font-size: 3.2em;
-            color: #ff6b9d;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        .release-section p {
-            text-align: center;
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 50px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .release-image-container {
-            background: white;
-            padding: 50px;
-            border-radius: 40px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .release-image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 20px;
-        }
-
-        /* Benefits Section */
-        .benefits-section {
-            margin-bottom: 100px;
-        }
-
-        .benefits-section h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            text-align: center;
-            font-size: 3.2em;
-            color: #ff6b9d;
-            margin-bottom: 60px;
-            font-weight: 700;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-        }
-
-        .benefit-card {
-            background: linear-gradient(135deg, #ffa07a 0%, #ff8c69 100%);
-            padding: 45px 35px;
-            border-radius: 35px;
-            color: white;
-            box-shadow: 0 12px 35px rgba(255, 107, 157, 0.25);
-            transition: all 0.3s;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 18px 50px rgba(255, 107, 157, 0.35);
-        }
-
-        .benefit-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .benefit-card p {
-            font-size: 1.15em;
-            line-height: 1.7;
-            opacity: 0.95;
-        }
-
-        /* How It Works */
-        .how-it-works {
-            text-align: center;
-            margin-bottom: 100px;
-        }
-
-        .how-it-works h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.2em;
-            color: #ff6b9d;
-            margin-bottom: 60px;
-            font-weight: 700;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 45px;
-        }
-
-        .step {
-            background: linear-gradient(135deg, #ff6b9d 0%, #ffa07a 100%);
-            padding: 50px 40px;
-            border-radius: 35px;
-            color: white;
-            box-shadow: 0 12px 35px rgba(255, 107, 157, 0.3);
-            transition: all 0.3s;
-        }
-
-        .step:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 18px 50px rgba(255, 107, 157, 0.4);
-        }
-
-        .step-number {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.5em;
+        .two-column h2 {
+            font-size: 2.5em;
             font-weight: 800;
             margin-bottom: 20px;
-            opacity: 0.9;
+            letter-spacing: -1px;
         }
 
-        .step h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8em;
-            margin-bottom: 18px;
+        .two-column p {
+            font-size: 1.1em;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-item h3 {
+            font-size: 1.4em;
             font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark);
         }
 
-        .step p {
-            font-size: 1.15em;
+        .feature-item p {
+            color: var(--gray);
+            font-size: 0.98em;
             line-height: 1.7;
         }
 
         /* Tokenomics */
         .tokenomics {
-            background: linear-gradient(135deg, #ff6b9d 0%, #ffa07a 100%);
-            padding: 90px 50px;
-            border-radius: 45px;
-            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 80px 60px;
+            border-radius: 20px;
             margin-bottom: 100px;
-            box-shadow: 0 20px 70px rgba(255, 107, 157, 0.35);
         }
 
         .tokenomics h2 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3em;
+            font-weight: 800;
+            color: white;
             text-align: center;
-            font-size: 3.2em;
-            margin-bottom: 60px;
-            font-weight: 700;
+            margin-bottom: 50px;
+            letter-spacing: -1px;
         }
 
         .token-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
 
-        .token-card {
+        .token-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .token-item:hover {
             background: rgba(255, 255, 255, 0.25);
-            padding: 45px;
-            border-radius: 30px;
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            transition: all 0.3s;
+            transform: translateY(-4px);
         }
 
-        .token-card:hover {
-            background: rgba(255, 255, 255, 0.35);
-            transform: translateY(-8px);
-        }
-
-        .token-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2em;
-            margin-bottom: 18px;
+        .token-item h3 {
+            font-size: 1.3em;
             font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
         }
 
-        .token-card p {
-            font-size: 1.15em;
+        .token-item p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.98em;
             line-height: 1.7;
         }
 
-        /* FAQ Section */
+        /* FAQ */
         .faq-section {
             margin-bottom: 100px;
         }
 
-        .faq-section h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            text-align: center;
-            font-size: 3.2em;
-            color: #ff6b9d;
-            margin-bottom: 60px;
-            font-weight: 700;
-        }
-
         .faq-item {
             background: white;
-            padding: 40px;
-            border-radius: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 3px solid transparent;
+            padding: 35px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
 
         .faq-item:hover {
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-            border-color: #ff6b9d;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
         }
 
         .faq-question {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5em;
-            color: #ff6b9d;
+            font-size: 1.2em;
             font-weight: 700;
-            margin-bottom: 15px;
+            color: var(--dark);
+            margin-bottom: 12px;
         }
 
         .faq-answer {
-            color: #666;
+            color: var(--gray);
             line-height: 1.8;
-            font-size: 1.15em;
         }
 
-        /* Social Section */
+        /* Social */
         .social-section {
             text-align: center;
-            padding: 70px 30px;
-            background: white;
-            border-radius: 45px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
             margin-bottom: 100px;
-        }
-
-        .social-section h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3em;
-            color: #ff6b9d;
-            margin-bottom: 50px;
-            font-weight: 700;
         }
 
         .social-buttons {
             display: flex;
             justify-content: center;
-            gap: 35px;
-            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
         }
 
         .social-btn {
-            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
-            color: white;
-            padding: 22px 55px;
-            font-size: 1.35em;
-            font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 15px;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.35);
-        }
-
-        .social-btn img {
-            width: 28px;
-            height: 28px;
-            filter: brightness(0) invert(1);
+            gap: 12px;
+            background: white;
+            color: var(--dark);
+            padding: 16px 35px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
 
         .social-btn:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .social-btn img {
+            width: 20px;
+            height: 20px;
         }
 
         /* Footer */
         footer {
+            background: white;
+            padding: 40px;
             text-align: center;
-            padding: 60px 30px;
-            background: linear-gradient(135deg, #ff6b9d 0%, #ffa07a 100%);
-            color: white;
-            border-radius: 45px 45px 0 0;
-            margin-top: 100px;
-        }
-
-        footer p {
-            font-size: 1.25em;
-            margin-bottom: 12px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--gray);
+            font-size: 0.95em;
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 80px 40px 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5em;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .token-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 20px;
-                padding: 20px 30px;
+            .nav-container {
+                padding: 0 20px;
             }
 
             .nav-links {
@@ -577,32 +441,31 @@
                 gap: 15px;
             }
 
-            .hero h1 {
-                font-size: 2.8em;
+            .hero {
+                padding: 60px 20px 40px;
             }
 
-            .hero p {
-                font-size: 1.3em;
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .container {
+                padding: 0 20px 40px;
+            }
+
+            .section-title {
+                font-size: 2em;
             }
 
             iframe {
                 height: 500px;
             }
 
-            .game-section {
-                padding: 40px 30px;
-            }
-
-            .stats-bar {
-                padding: 30px 20px;
-            }
-
-            .stat-number {
-                font-size: 2.2em;
+            .stats {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Smooth scroll */
         html {
             scroll-behavior: smooth;
         }
@@ -611,228 +474,176 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo">TamaEggs</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#play">Play</a>
-            <a href="#benefits">Benefits</a>
-            <a href="#how">How It Works</a>
-            <a href="#tokenomics">Tokenomics</a>
-            <a href="#faq">FAQ</a>
+        <div class="nav-container">
+            <div class="logo">TamaEggs</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#play">Play</a>
+                <a href="#evolution">Evolution</a>
+                <a href="#tokenomics">Tokenomics</a>
+                <a href="#faq">FAQ</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="home" class="hero">
-        <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/695d413f1593926f798e4eb8_TAMA-EGGS-06-01-2026.png" alt="TamaEggs" class="hero-image">
-        <h1>Play & Earn $TAMA</h1>
-        <p>Hatch, Care & Earn with Your Digital Pet</p>
-        <a href="#play" class="cta-button">Start Playing Now</a>
+        <div class="hero-content">
+            <h1>Play & Earn <span class="gradient-text">$TAMA</span></h1>
+            <p>Hatch, care for, and evolve your digital pet while earning real cryptocurrency rewards.</p>
+            <a href="#play" class="cta-button">Start Playing Now</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/695d413f1593926f798e4eb8_TAMA-EGGS-06-01-2026.png" alt="TamaEggs">
+        </div>
     </section>
 
     <div class="container">
-        <!-- Stats Bar -->
-        <div class="stats-bar">
-            <div class="stat-item">
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card">
                 <div class="stat-number">10K+</div>
                 <div class="stat-label">Active Players</div>
             </div>
-            <div class="stat-item">
+            <div class="stat-card">
                 <div class="stat-number">$500K</div>
                 <div class="stat-label">Rewards Distributed</div>
             </div>
-            <div class="stat-item">
+            <div class="stat-card">
                 <div class="stat-number">50+</div>
                 <div class="stat-label">Evolution Stages</div>
             </div>
-            <div class="stat-item">
+            <div class="stat-card">
                 <div class="stat-number">24/7</div>
-                <div class="stat-label">Play Anytime</div>
+                <div class="stat-label">Always Available</div>
             </div>
         </div>
 
-        <!-- Features Section -->
-        <div class="features">
-            <div class="feature-card">
-                <h3>Hatch Your Egg</h3>
-                <p>Start your journey by hatching your very own TamaEgg and watch it grow into something amazing. Every egg is unique and contains potential for incredible evolution paths.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Earn $TAMA</h3>
-                <p>Play mini-games, complete challenges, and earn $TAMA tokens while having fun. Real rewards for real gameplay with instant distribution.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Level Up</h3>
-                <p>Care for your pet and watch it evolve through different stages with unique abilities. Each evolution unlocks new features and higher earning potential.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Fun Gameplay</h3>
-                <p>Enjoy classic pet game mechanics with modern blockchain rewards. Nostalgic gameplay meets cutting-edge technology for a seamless experience.</p>
-            </div>
-        </div>
-
-        <!-- Game Section -->
+        <!-- Game -->
         <section id="play" class="game-section">
-            <h2>Play TamaEggs Now</h2>
-            <div class="game-container">
+            <h2 class="section-title">Play Now</h2>
+            <div class="game-wrapper">
                 <iframe src="https://autosam.github.io/Tamaweb/" title="TamaEggs Game"></iframe>
             </div>
         </section>
 
-        <!-- Evolution Chart Section -->
-        <section class="evolution-section">
-            <h2>Evolution Chart</h2>
-            <p>Discover all the incredible evolution stages your TamaEgg can transform into. Each evolution brings unique abilities, characteristics, and earning potential. Will you unlock them all?</p>
-            <div class="evolution-chart">
-                <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/695d43ba4dedacf83f7a7ec5_JGhFRz.jpg" alt="TamaEggs Evolution Chart">
+        <!-- Evolution Chart -->
+        <section id="evolution" class="two-column">
+            <div>
+                <h2>Evolution System</h2>
+                <p>Discover over 50 unique evolution stages. Each evolution unlocks new abilities, characteristics, and earning potential. Your pet's growth depends on how you care for it, creating a truly personalized experience.</p>
+            </div>
+            <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/695d43ba4dedacf83f7a7ec5_JGhFRz.jpg" alt="Evolution Chart">
+        </section>
+
+        <!-- Release -->
+        <section class="two-column">
+            <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/695d43ba1443d7e8ced6853e_sqpPgp%20(1).png" alt="Official Release">
+            <div>
+                <h2>Now Live</h2>
+                <p>TamaEggs is officially launched and ready to play. Join thousands of players worldwide in this innovative play-to-earn experience. Start hatching your eggs today and begin your journey toward earning $TAMA tokens.</p>
             </div>
         </section>
 
-        <!-- Release Section -->
-        <section class="release-section">
-            <h2>Official Release</h2>
-            <p>TamaEggs is now live and ready to play. Join thousands of players worldwide in this exciting play-to-earn adventure. Start hatching your eggs today and begin earning $TAMA tokens.</p>
-            <div class="release-image-container">
-                <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/695d43ba1443d7e8ced6853e_sqpPgp%20(1).png" alt="TamaEggs Release">
+        <!-- Features -->
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>Free to Play</h3>
+                <p>No upfront costs. Start playing immediately without barriers to entry.</p>
             </div>
-        </section>
-
-        <!-- Benefits Section -->
-        <section id="benefits" class="benefits-section">
-            <h2>Why Choose TamaEggs</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <h3>Free to Play</h3>
-                    <p>No upfront costs or hidden fees. Start playing immediately without any barriers to entry.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>Daily Rewards</h3>
-                    <p>Log in every day to claim bonus rewards and participate in special limited-time events.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>Secure & Fair</h3>
-                    <p>Built on blockchain technology ensuring transparent and fair gameplay for all participants.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>Active Community</h3>
-                    <p>Join thousands of players worldwide in a vibrant community of pet lovers and gamers.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>Regular Updates</h3>
-                    <p>New features, pets, and challenges added regularly to keep the game fresh and exciting.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>Cross-Platform</h3>
-                    <p>Play on any device, anywhere. Your progress syncs seamlessly across all platforms.</p>
-                </div>
+            <div class="feature-item">
+                <h3>Play-to-Earn</h3>
+                <p>Earn $TAMA tokens through gameplay, challenges, and achievements.</p>
             </div>
-        </section>
-
-        <!-- How It Works -->
-        <section id="how" class="how-it-works">
-            <h2>How It Works</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Start Playing</h3>
-                    <p>Load up the game and hatch your first TamaEgg. Choose your starting egg and begin your adventure.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Care & Play</h3>
-                    <p>Feed, play, and complete daily challenges with your pet. Build a strong bond and unlock new abilities.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Earn Rewards</h3>
-                    <p>Collect $TAMA tokens as you progress and level up. More gameplay equals more earnings.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Evolve & Grow</h3>
-                    <p>Watch your TamaEgg evolve into new forms with special abilities. Discover rare evolution paths.</p>
-                </div>
+            <div class="feature-item">
+                <h3>Unique Evolution</h3>
+                <p>Each pet evolves differently based on your care and gameplay style.</p>
             </div>
-        </section>
+            <div class="feature-item">
+                <h3>Daily Rewards</h3>
+                <p>Log in daily for bonus rewards and limited-time events.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Blockchain Security</h3>
+                <p>Built on blockchain for transparent and fair gameplay.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Cross-Platform</h3>
+                <p>Play on any device with seamless progress syncing.</p>
+            </div>
+        </div>
 
         <!-- Tokenomics -->
         <section id="tokenomics" class="tokenomics">
             <h2>$TAMA Tokenomics</h2>
             <div class="token-grid">
-                <div class="token-card">
-                    <h3>Play-to-Earn</h3>
-                    <p>Earn $TAMA by playing games and completing daily tasks. Every action in the game has the potential to generate rewards.</p>
+                <div class="token-item">
+                    <h3>Player Rewards</h3>
+                    <p>70% allocated to player earnings and community growth initiatives.</p>
                 </div>
-                <div class="token-card">
-                    <h3>Fair Distribution</h3>
-                    <p>70% allocated to player rewards and community growth. We prioritize players over everything else.</p>
+                <div class="token-item">
+                    <h3>Game Development</h3>
+                    <p>20% dedicated to ongoing development and new features.</p>
                 </div>
-                <div class="token-card">
-                    <h3>Game Rewards</h3>
-                    <p>Earn tokens through gameplay, achievements, and special events. Multiple earning opportunities daily.</p>
+                <div class="token-item">
+                    <h3>Marketing</h3>
+                    <p>10% for community building and ecosystem expansion.</p>
                 </div>
-                <div class="token-card">
-                    <h3>Community First</h3>
-                    <p>Built by the community, for the community with transparent tokenomics. Your voice matters.</p>
-                </div>
-                <div class="token-card">
+                <div class="token-item">
                     <h3>Staking Benefits</h3>
-                    <p>Stake your $TAMA tokens to earn passive income and unlock exclusive in-game features.</p>
+                    <p>Stake tokens for passive income and exclusive features.</p>
                 </div>
-                <div class="token-card">
+                <div class="token-item">
                     <h3>Trading Support</h3>
-                    <p>Trade $TAMA on major exchanges with deep liquidity and competitive spreads.</p>
+                    <p>Listed on major exchanges with deep liquidity pools.</p>
+                </div>
+                <div class="token-item">
+                    <h3>Transparent</h3>
+                    <p>All token movements tracked on-chain for full transparency.</p>
                 </div>
             </div>
         </section>
 
         <!-- FAQ -->
         <section id="faq" class="faq-section">
-            <h2>Frequently Asked Questions</h2>
+            <h2 class="section-title">Frequently Asked Questions</h2>
             <div class="faq-item">
                 <div class="faq-question">What is TamaEggs?</div>
-                <div class="faq-answer">TamaEggs is a nostalgic digital pet game where you can hatch, care for, and evolve your own creatures while earning $TAMA tokens. It combines classic Tamagotchi gameplay with modern blockchain technology.</div>
+                <div class="faq-answer">TamaEggs is a nostalgic digital pet game where you hatch, care for, and evolve creatures while earning $TAMA cryptocurrency. It combines classic Tamagotchi gameplay with modern blockchain technology.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">How do I earn $TAMA?</div>
-                <div class="faq-answer">You earn $TAMA by playing mini-games, completing daily challenges, caring for your pet, and achieving milestones in the game. The more you play, the more you earn.</div>
+                <div class="faq-answer">Earn $TAMA by playing mini-games, completing daily challenges, caring for your pet, and reaching milestones. The more engaged you are, the more you earn.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Is it free to play?</div>
-                <div class="faq-answer">Yes, TamaEggs is completely free to play. Just load up the game and start hatching your egg. There are no hidden fees or pay-to-win mechanics.</div>
+                <div class="faq-answer">Yes, TamaEggs is completely free to play with no hidden fees or pay-to-win mechanics.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">What can I do with $TAMA tokens?</div>
-                <div class="faq-answer">$TAMA tokens can be used for in-game purchases, special items, staking for passive income, and can be traded on supported exchanges. You have full ownership of your earned tokens.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">How does my pet evolve?</div>
-                <div class="faq-answer">Your TamaEgg evolves based on how you care for it. Feed it, play with it, and complete challenges to unlock new evolution stages. Different care patterns lead to different evolution paths.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Is there a mobile app?</div>
-                <div class="faq-answer">Currently TamaEggs is playable through web browsers on any device. A dedicated mobile app is in development and will be released soon with additional features.</div>
+                <div class="faq-answer">Use $TAMA for in-game purchases, stake for passive income, or trade on supported exchanges. You have full ownership of your earned tokens.</div>
             </div>
         </section>
 
-        <!-- Social Section -->
-        <div class="social-section">
-            <h2>Join Our Community</h2>
+        <!-- Social -->
+        <section class="social-section">
+            <h2 class="section-title">Join Our Community</h2>
             <div class="social-buttons">
                 <a href="https://x.com" target="_blank" class="social-btn">
-                    <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/693b3a09b7a72f965e7c7747_twitter-x-logo-png_seeklogo-492397%20(1).png" alt="Twitter"> Twitter
+                    <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/693b3a09b7a72f965e7c7747_twitter-x-logo-png_seeklogo-492397%20(1).png" alt="Twitter">
+                    Twitter
                 </a>
                 <a href="https://github.com/readease1/TamaEggs" target="_blank" class="social-btn">
-                    <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/693b35e9e6587f8011fa15aa_38401-github-logo-silhouette-in-a-square-icon-vector-icon-vector-eps.png" alt="GitHub"> GitHub
+                    <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/693b35e9e6587f8011fa15aa_38401-github-logo-silhouette-in-a-square-icon-vector-icon-vector-eps.png" alt="GitHub">
+                    GitHub
                 </a>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>TamaEggs - Play, Earn, & Have Fun</p>
-        <p>© 2026 TamaEggs | All Rights Reserved</p>
+        <p>© 2026 TamaEggs. All rights reserved.</p>
     </footer>
 </body>
 </html>
